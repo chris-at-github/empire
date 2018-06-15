@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class Settlement extends Migration {
+class Settlements extends Migration {
 
 	/**
 	 * Run the migrations.
@@ -12,10 +12,9 @@ class Settlement extends Migration {
 	 * @return void
 	 */
 	public function up() {
-		Schema::create('settlement', function(Blueprint $table) {
-//			$table->id('id');
-			$table->increments('id');
-//			$table->primary('id');
+		Schema::create('settlements', function(Blueprint $table) {
+			$table->uuid('id');
+			$table->primary('id');
 			$table->timestamps();
 		});
 	}
@@ -26,6 +25,6 @@ class Settlement extends Migration {
 	 * @return void
 	 */
 	public function down() {
-		Schema::dropIfExists('settlement');
+		Schema::dropIfExists('settlements');
 	}
 }
