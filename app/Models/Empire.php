@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Empire extends Model {
 
-	use Traits\Uuid;
+	use \App\Traits\Uuid;
 
 	/**
 	 * Indicates if the IDs are auto-incrementing.
