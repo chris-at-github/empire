@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Settlements;
+namespace App\Packages\Settlement;
 
 class Settlement {
 
