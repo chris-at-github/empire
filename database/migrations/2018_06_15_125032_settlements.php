@@ -13,8 +13,13 @@ class Settlements extends Migration {
 	 */
 	public function up() {
 		Schema::create('settlements', function(Blueprint $table) {
+
+			// Uuid for id
 			$table->uuid('id');
 			$table->primary('id');
+
+			$table->string('namespace')->nullable();
+
 			$table->timestamps();
 		});
 	}

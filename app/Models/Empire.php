@@ -23,16 +23,6 @@ class Empire extends Model {
 	protected $guarded =[];
 
 	/**
-	 * Create a new Eloquent model instance.
-	 *
-	 * @param  array $attributes
-	 * @return void
-	 */
-	public function __construct(array $attributes = []) {
-		parent::__construct($attributes);
-	}
-
-	/**
 	 * store an mass assignment array to the model properties. if validator rules are defined, the
 	 * properties will be checked before saving them to database
 	 *

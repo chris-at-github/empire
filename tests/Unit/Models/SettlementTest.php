@@ -21,7 +21,7 @@ class SettlementTest extends \Tests\TestCase {
 	public function testCreate() {
 		$settlement = app(\App\Models\Settlement::class);
 
-		$this->assertTrue($settlement->save());
+		$this->assertTrue($settlement->store());
 		$this->assertTrue(\Ramsey\Uuid\Uuid::isValid($settlement->id));
 	}
 
@@ -36,5 +36,18 @@ class SettlementTest extends \Tests\TestCase {
 
 		$this->assertInstanceOf(\App\Models\Settlement::class, $settlement);
 		$this->assertEquals($uuid, $settlement->id);
+	}
+
+	public function testStoreAndGet() {
+		$namespace = 'App\Packages\Settlement\Settlement';
+
+		$store = app(\App\Models\Settlement::class);
+		$store->store([
+			'namespace' => $namespace
+		]);
+
+		$get = app(\App\Models\Settlement::class)::find($store->id);
+
+		$this->assertEquals($namespace, $get->namespace);
 	}
 }
