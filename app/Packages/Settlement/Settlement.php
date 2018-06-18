@@ -4,5 +4,5 @@ namespace App\Packages\Settlement;
 
 class Settlement {
 
-	use \App\Traits\EloquentSerializable;
+	use \App\Traits\PackageSerializable;
 }

@@ -2,7 +2,7 @@
 
 namespace App\Traits;
 
-trait EloquentSerializable {
+trait PackageSerializable {
 
 	/**
 	 * @return string
