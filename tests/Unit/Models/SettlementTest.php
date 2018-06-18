@@ -24,4 +24,17 @@ class SettlementTest extends \Tests\TestCase {
 		$this->assertTrue($settlement->save());
 		$this->assertTrue(\Ramsey\Uuid\Uuid::isValid($settlement->id));
 	}
+
+	public function testFindById() {
+		$uuid = \Ramsey\Uuid\Uuid::uuid4()->toString();
+
+		\Illuminate\Support\Facades\DB::table('settlements')->insert([
+			'id' => $uuid
+		]);
+
+		$settlement = app(\App\Models\Settlement::class)::find($uuid);
+
+		$this->assertInstanceOf(\App\Models\Settlement::class, $settlement);
+		$this->assertEquals($uuid, $settlement->id);
+	}
 }
