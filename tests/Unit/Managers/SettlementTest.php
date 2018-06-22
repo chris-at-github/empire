@@ -14,6 +14,13 @@ class SettlementManagerTest extends \Tests\TestCase {
 		\Illuminate\Support\Facades\DB::table('settlements')->truncate();
 	}
 
+	/**
+	 * @see https://phpunit.de/manual/6.5/en/writing-tests-for-phpunit.html
+	 */
+	public function databaseProvider() {
+
+	}
+
 	public function testIntance() {
 		$this->assertInstanceOf(\App\Managers\Settlement::class, app(\App\Managers\Settlement::class));
 	}
