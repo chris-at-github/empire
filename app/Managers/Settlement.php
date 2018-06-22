@@ -14,7 +14,11 @@ class Settlement {
 	 * @param \App\Models\Settlement $model
 	 * @return \App\Packages\Settlement\Settlement
 	 */
-	public function get(\App\Models\Settlement $model) {}
+	public function get(\App\Models\Settlement $model) {
+		$settlement = app($model->namespace);
+
+		return $settlement;
+	}
 
 	/**
 	 * @param \App\Packages\Settlement\Settlement $settlement
