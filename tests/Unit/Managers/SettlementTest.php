@@ -17,18 +17,7 @@ class SettlementManagerTest extends \Tests\TestCase {
 	/**
 	 * @see https://phpunit.de/manual/6.5/en/writing-tests-for-phpunit.html
 	 */
-	public function databaseProvider() {
-
-	}
-
-	public function testIntance() {
-		$this->assertInstanceOf(\App\Managers\Settlement::class, app(\App\Managers\Settlement::class));
-	}
-
-	public function testGet() {
-
-		// Erstellung der Testdaten
-		$manager = app(\App\Managers\Settlement::class);
+	public function settlementModelProvider() {
 		$uuid = \Ramsey\Uuid\Uuid::uuid4()->toString();
 
 		\Illuminate\Support\Facades\DB::table('settlements')->insert([
@@ -36,7 +25,16 @@ class SettlementManagerTest extends \Tests\TestCase {
 			'namespace' => 'App\Packages\Settlement\Settlement'
 		]);
 
-		$model = app(\App\Models\Settlement::class)::find($uuid);
+		return app(\App\Models\Settlement::class)::find($uuid);
+	}
+
+	public function testIntance() {
+		$this->assertInstanceOf(\App\Managers\Settlement::class, app(\App\Managers\Settlement::class));
+	}
+
+	public function testGet() {
+		$model = $this->settlementModelProvider();
+		$manager = app(\App\Managers\Settlement::class);
 		$settlement = $manager->get($model);
 
 		$this->assertInstanceOf(\App\Packages\Settlement\Settlement::class, $settlement);
