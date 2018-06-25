@@ -38,5 +38,7 @@ class SettlementManagerTest extends \Tests\TestCase {
 		$settlement = $manager->get($model);
 
 		$this->assertInstanceOf(\App\Packages\Settlement\Settlement::class, $settlement);
+		$this->assertEquals($model->id, $settlement->getUuid());
+		$this->assertEquals($model, $settlement->getModel());
 	}
 }

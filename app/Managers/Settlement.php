@@ -17,6 +17,12 @@ class Settlement {
 	public function get(\App\Models\Settlement $model) {
 		$settlement = app($model->namespace);
 
+		if($settlement instanceof \App\Packages\Settlement\Settlement) {
+			$settlement
+				->setUuid($model->id)
+				->setModel($model);
+		}
+
 		return $settlement;
 	}
 
