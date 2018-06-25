@@ -15,6 +15,11 @@ trait PackageSerializable {
 	protected $uuid;
 
 	/**
+	 * @var boolean
+	 */
+	protected $exist = false;
+
+	/**
 	 * @return string
 	 */
 	public function getNamespace() {
@@ -51,6 +56,23 @@ trait PackageSerializable {
 	 */
 	public function setUuid(string $uuid) {
 		$this->uuid = $uuid;
+
+		return $this;
+	}
+
+	/**
+	 * @return bool
+	 */
+	public function getExist() {
+		return $this->exist;
+	}
+
+	/**
+	 * @param bool $exist
+	 * @return \App\Traits\PackageSerializable
+	 */
+	public function setExist(bool $exist) {
+		$this->exist = $exist;
 
 		return $this;
 	}

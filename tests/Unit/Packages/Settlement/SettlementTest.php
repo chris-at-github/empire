@@ -28,4 +28,13 @@ class SettlementTest extends \Tests\TestCase {
 		$this->assertInstanceOf(\App\Packages\Settlement\Settlement::class, $settlement->setModel($model));
 		$this->assertEquals($model, $settlement->getModel());
 	}
+
+	public function testExistProperty() {
+		$settlement = app(\App\Packages\Settlement\Settlement::class);
+
+		$this->assertFalse($settlement->getExist());
+
+		$settlement->setExist(true);
+		$this->assertTrue($settlement->getExist());
+	}
 }
