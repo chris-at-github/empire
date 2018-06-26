@@ -44,6 +44,17 @@ class Settlement {
 	public function store(\App\Packages\Settlement\Settlement $settlement) {
 		if($settlement->getExist() === true) {
 			$settlement->getModel()->store();
+
+		} else {
+			$model = app(\App\Models\Settlement::class);
+			$model->id = $settlement->getUuid();
+			$model->store([
+				'namespace' => $settlement->getNamespace()
+			]);
+
+			$settlement
+				->setExist(true)
+				->setModel($model);
 		}
 
 		return $settlement;
