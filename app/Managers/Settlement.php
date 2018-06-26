@@ -19,6 +19,7 @@ class Settlement {
 
 		if($settlement instanceof \App\Packages\Settlement\Settlement) {
 			$settlement
+				->setExist(true)
 				->setUuid($model->id)
 				->setModel($model);
 		}
