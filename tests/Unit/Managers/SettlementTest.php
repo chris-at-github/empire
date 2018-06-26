@@ -22,7 +22,9 @@ class SettlementManagerTest extends \Tests\TestCase {
 
 		\Illuminate\Support\Facades\DB::table('settlements')->insert([
 			'id' => $uuid,
-			'namespace' => 'App\Packages\Settlement\Settlement'
+			'namespace' => 'App\Packages\Settlement\Settlement',
+			'created_at' => '2018-06-18 23:30:00',
+			'updated_at' => '2018-06-18 23:30:00'
 		]);
 
 		return app(\App\Models\Settlement::class)::find($uuid);
@@ -41,5 +43,13 @@ class SettlementManagerTest extends \Tests\TestCase {
 		$this->assertTrue($settlement->getExist());
 		$this->assertEquals($model->id, $settlement->getUuid());
 		$this->assertEquals($model, $settlement->getModel());
+	}
+
+	public function testGetStore() {
+		$model = $this->settlementModelProvider();
+		$manager = app(\App\Managers\Settlement::class);
+		$settlement = $manager->get($model);
+
+		$this->assertInstanceOf(\App\Packages\Settlement\Settlement::class, $manager->store($settlement));
 	}
 }

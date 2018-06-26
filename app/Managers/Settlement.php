@@ -31,7 +31,13 @@ class Settlement {
 	 * @param \App\Packages\Settlement\Settlement $settlement
 	 * @return \App\Packages\Settlement\Settlement
 	 */
-	public function store(\App\Packages\Settlement\Settlement $settlement) {}
+	public function store(\App\Packages\Settlement\Settlement $settlement) {
+		if($settlement->getExist() === true) {
+			$settlement->getModel()->store();
+		}
+
+		return $settlement;
+	}
 
 	/**
 	 * @return \App\Packages\Settlement\Settlement
