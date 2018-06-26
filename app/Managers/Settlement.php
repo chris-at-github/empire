@@ -8,7 +8,17 @@ class Settlement {
 	 * @param string $namespace
 	 * @return \App\Packages\Settlement\Settlement
 	 */
-	public function create($namespace) {}
+	public function create($namespace) {
+		$settlement = app($namespace);
+
+		if($settlement instanceof \App\Packages\Settlement\Settlement) {
+			$settlement
+				->setExist(false)
+				->setUuid(\Ramsey\Uuid\Uuid::uuid4()->toString());
+		}
+
+		return $settlement;
+	}
 
 	/**
 	 * @param \App\Models\Settlement $model

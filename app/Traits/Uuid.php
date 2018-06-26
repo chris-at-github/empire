@@ -11,7 +11,9 @@ trait Uuid {
 		parent::boot();
 
 		static::creating(function($model) {
-			$model->{$model->getKeyName()} = \Ramsey\Uuid\Uuid::uuid4()->toString();
+			if(empty($model->{$model->getKeyName()}) === true) {
+				$model->{$model->getKeyName()} = \Ramsey\Uuid\Uuid::uuid4()->toString();
+			}
 		});
 	}
 }

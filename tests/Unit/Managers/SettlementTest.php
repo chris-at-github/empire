@@ -52,4 +52,13 @@ class SettlementManagerTest extends \Tests\TestCase {
 
 		$this->assertInstanceOf(\App\Packages\Settlement\Settlement::class, $manager->store($settlement));
 	}
+
+	public function testCreate() {
+		$manager = app(\App\Managers\Settlement::class);
+		$settlement = $manager->create(\App\Packages\Settlement\Settlement::class);
+
+		$this->assertInstanceOf(\App\Packages\Settlement\Settlement::class, $settlement);
+		$this->assertFalse($settlement->getExist());
+		$this->assertTrue(\Ramsey\Uuid\Uuid::isValid($settlement->getUuid()));
+	}
 }

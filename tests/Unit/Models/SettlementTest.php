@@ -25,6 +25,16 @@ class SettlementTest extends \Tests\TestCase {
 		$this->assertTrue(\Ramsey\Uuid\Uuid::isValid($settlement->id));
 	}
 
+	public function testCreateUuid() {
+		$settlement = app(\App\Models\Settlement::class);
+		$uuid = \Ramsey\Uuid\Uuid::uuid4()->toString();
+
+		$settlement->id = $uuid;
+		$settlement->store();
+
+		$this->assertEquals($settlement->id, $uuid);
+	}
+
 	public function testFindById() {
 		$uuid = \Ramsey\Uuid\Uuid::uuid4()->toString();
 
