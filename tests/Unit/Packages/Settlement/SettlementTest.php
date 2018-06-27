@@ -37,4 +37,39 @@ class SettlementTest extends \Tests\TestCase {
 		$settlement->setExist(true);
 		$this->assertTrue($settlement->getExist());
 	}
+
+	public function testNameProperty() {
+		$settlement = app(\App\Packages\Settlement\Settlement::class);
+		$name = 'SE2018-06-27';
+
+		$this->assertInstanceOf(\App\Packages\Settlement\Settlement::class, $settlement->setName($name));
+		$this->assertEquals($name, $settlement->getName());
+	}
+
+	public function testFillableProperty() {
+		$settlement = app(\App\Packages\Settlement\Settlement::class);
+		$fillable = ['name', 'worker'];
+
+		$this->assertInstanceOf(\App\Packages\Settlement\Settlement::class, $settlement->setFillable($fillable));
+		$this->assertEquals($fillable, $settlement->getFillable());
+	}
+
+	public function testFillableValues() {
+		$settlement = app(\App\Packages\Settlement\Settlement::class);
+		$fillable = [
+			'name' => 'SE2018-06-27'
+		];
+
+		$settlement->fill($fillable);
+
+		$this->assertEquals($fillable['name'], $settlement->getName());
+	}
+
+//	public function testSerializableProperty() {
+//		$settlement = app(\App\Packages\Settlement\Settlement::class);
+//		$serializable = ['name', 'worker'];
+//
+//		$this->assertInstanceOf(\App\Packages\Settlement\Settlement::class, $settlement->setFillable($serializable));
+//		$this->assertEquals($serializable, $settlement->getFillable());
+//	}
 }
