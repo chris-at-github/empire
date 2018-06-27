@@ -19,6 +19,7 @@ class Settlements extends Migration {
 			$table->primary('id');
 
 			$table->string('namespace')->nullable();
+			$table->text('properties');
 
 			$table->timestamps();
 		});
