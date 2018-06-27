@@ -50,14 +50,19 @@ class SettlementTest extends \Tests\TestCase {
 
 	public function testStoreAndGet() {
 		$namespace = 'App\Packages\Settlement\Settlement';
+		$properties = json_encode([
+			'name' => 'SE01'
+		]);
 
 		$store = app(\App\Models\Settlement::class);
 		$store->store([
-			'namespace' => $namespace
+			'namespace' => $namespace,
+			'properties' => $properties
 		]);
 
 		$get = app(\App\Models\Settlement::class)::find($store->id);
 
 		$this->assertEquals($namespace, $get->namespace);
+		$this->assertEquals($properties, $get->properties);
 	}
 }

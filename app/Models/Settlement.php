@@ -12,5 +12,5 @@ class Settlement extends Empire {
 	/**
 	 * @var array
 	 */
-	protected $fillable = ['namespace'];
+	protected $fillable = ['namespace', 'properties'];
 }
