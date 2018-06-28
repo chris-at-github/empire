@@ -65,11 +65,15 @@ class SettlementTest extends \Tests\TestCase {
 		$this->assertEquals($fillable['name'], $settlement->getName());
 	}
 
-//	public function testSerializableProperty() {
-//		$settlement = app(\App\Packages\Settlement\Settlement::class);
-//		$serializable = ['name', 'worker'];
-//
+	public function testSerializableProperty() {
+		$settlement = app(\App\Packages\Settlement\Settlement::class);
+		$fillable = ['name', 'worker'];
+		$serializable = ['name'];
+
+		$settlement->setFillable($serializable);
+		$this->assertEquals($fillable, $settlement->getSerializable());
+
 //		$this->assertInstanceOf(\App\Packages\Settlement\Settlement::class, $settlement->setFillable($serializable));
-//		$this->assertEquals($serializable, $settlement->getFillable());
-//	}
+
+	}
 }

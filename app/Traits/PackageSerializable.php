@@ -111,14 +111,14 @@ trait PackageSerializable {
 	}
 
 	/**
-	 * @return array|null
+	 * @return array
 	 */
 	public function getSerializable() {
 		return $this->serializable;
 	}
 
 	/**
-	 * @param array|null $serializable
+	 * @param array $serializable
 	 */
 	public function setSerializable($serializable) {
 		$this->serializable = $serializable;
